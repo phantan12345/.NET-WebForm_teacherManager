@@ -1,0 +1,143 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="QLKhoiLuongCongViecGiangVienNTU_62132937.MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Qu&#7843;n lý gi&#7843;ng d&#7841;y</title>
+    <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="stylesheet" href="styles/layout.css" type="text/css" />
+    <link href="CSS/adminstyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="scripts/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="scripts/jquery.timers.1.2.js"></script>
+<script type="text/javascript" src="scripts/jquery.galleryview.2.1.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.galleryview.setup.js"></script> 
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body  id="top"> 
+<center>
+<form id="form1" runat="server" style="width:90%">  
+
+ <div class="wrapper col0">
+  <div id="topline">
+    <p>Tel: 09888888888 | Mail:project5@utehy.edu.vn</p>
+      <ul >
+      <li><a href="#">Gi&#7899;i thi&#7879;u</a></li>
+      <li><a href="LienHe.aspx">Liên h&#7879;</a></li>
+      <li><a href="LienHe.aspx">Tr&#7907; giúp</a></li>
+      <li class="last"><a href="Login.aspx">Đăng nhập</a></li>
+    </ul>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper">
+  <div id="header">
+    <div class="fl_left">
+      <h1><a href="#"><strong>Q</strong>uản <strong>L</strong>ý <strong>T</strong>hừa <strong>G</strong>iờ</a></h1>
+      <p>Khoa công  ngh&#7879; thông tin UTEHY</p>
+    </div>
+     <div class="fl_right">
+     <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+                        width="100%" style="height: 100%">
+                   <%--<embed  src= width="468" height="60" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
+                            type="application/x-shockwave-flash" scale="exactfit" border="1" ></embed>--%>
+                            <img width="468" height="60" src="Image/logo truong.png" alt="Zing mp3">
+                    </object>
+     </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col2"  >
+  <div id="topbar" >
+    <div id="topnav">
+     <ul>
+        <li ><a href="Default.aspx">TRANG CH&#7910;</li>
+        <li><a href="####">CẬP NHẬT</a>
+        <ul>
+        <li><a href="GiangVien.aspx">Giảng viên</a></li>
+           <%-- <li><a href="HeSoLopDong.aspx">Hệ số lớp đông</a></li>--%>
+            <li><a href="HeDaoTao.aspx">Hệ đào tạo</a></li>
+              <li><a href="ChucVu.aspx">Chức vụ</a></li>
+            <li><a href="LoaiMon.aspx">Loại môn</a></li>
+              <li><a href="ThongTinMonHoc.aspx">Thông tin môn học</a></li>
+             <li><a href="GioChuan.aspx">Giờ chuẩn</a></li>
+                <li><a href="ThongTinLopHoc.aspx">Thông tin lớp học</a></li>    
+                <li><a href="BoMon.aspx">Thông tin bộ môn</a></li>    
+            
+        </ul>
+        </li>
+          <li><a href="####">GIẢNG DẠY</a>
+        <ul>
+        <li><a href="GiangDay.aspx">Nhập thông tin</a></li>
+        <li><a href="DoAnTotNghiep.aspx">Hướng dẫn, Phản biện đồ án</a></li>
+            <li><a href="HuongDanNCKH.aspx">Hướng dẫn nghiên cứu khoa học</a></li>
+            <li><a href="GiaoVienNCKH.aspx">Giảng viên nghiên cứu khoa học</a></li>
+            <li><a href="QuanLyPhongMay.aspx">Quản lý phòng máy</a></li>   
+              <li><a href="HocNangCao.aspx">Đi học nâng cao chuyên môn</a></li>  
+        </ul>
+        </li>
+       <%-- <li><a href="########">TÌM KIẾM</a>
+        <ul>
+        <li><a href="ChuyenMuc.aspx?CategoryID=21">Thông tin giảng viên</a></li>
+            <li><a href="ChuyenMuc.aspx?CategoryID=14">Hệ đào tạo</a></li>
+            <li><a href="ChuyenMuc.aspx?CategoryID=15">Lớp học</a></li>
+            <li><a href="ChuyenMuc.aspx?CategoryID=16">Môn Học</a></li>
+          </ul>
+        </li>--%>
+        <li><a href="###">THỐNG KÊ</a>
+          <ul>
+            <%--<li><a href="ChuyenMuc.aspx?CategoryID=19">Giờ chuẩn</a></li>
+            <li><a href="ChuyenMuc.aspx?CategoryID=22">Số giờ thừa</a></li>
+            <li><a href="ChuyenMuc.aspx?CategoryID=30">Thanh toán trả giờ thừa</a></li>--%>
+              <li><a href="ThongKeGiangDayTheoGiangVien.aspx">Theo từng giảng viên</a></li>
+          </ul>
+        </li>
+        <li class="last"><a href="####">CÁ NHÂN</a>
+        <ul>
+        <li><a href="ThongTinCaNhan.aspx">Xem thông tin cá nhân</a></li>
+            <li><a href="QuenMatKhau.aspx">Quên mật khẩu</a></li>
+            <li><a href="DoiMatKhau1.aspx">Đổi mật khẩu</a></li>            
+            <li><a href="TaoTaiKhoan.aspx">Tạo tài khoản</a></li>
+            <li><a href="Logout.aspx">Thoát</a></li>
+        </ul>
+        </li>
+      </ul>
+    </div>
+     <div id="search" >
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+ 
+ <center>
+<div style="text-align:center;"  >
+
+<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
+</asp:ContentPlaceHolder>
+
+</div>
+</center>
+
+
+<center> 
+<div style=" text-align:center;color:White; background-color:Silver; font-family: Arial, Helvetica, sans-serif; font-size: 13px; width:100%; padding-top:10px; padding-bottom:10px;">
+     Cấp phép ngày 14/09/2011<br />
+     Phát triển bơi nhóm project5 utehy.edu.vn<br />
+    Trụ sở Dân Tiến-Khoái Châu-Hưng Yên<br />
+     Điện  thoại: 032138888888
+ </div>
+ </center>
+
+</form>
+</center> 
+
+</body>
+</html>

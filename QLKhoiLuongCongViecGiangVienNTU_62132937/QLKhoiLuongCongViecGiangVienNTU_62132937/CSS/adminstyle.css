@@ -1,0 +1,123 @@
+﻿body 
+{
+	font-family:Times New Roman;
+}
+/*Style phần tiêu đề*/
+.tieude1
+	{ font-weight:bold; font-size:16px;
+		}
+/*Style phần chữ chân trang web*/
+#textfooter
+{ font-size:15px;font-weight:bold; color:White;
+  background-color:#1e90ff;
+  text-align:center;letter-spacing:27px;
+  padding-top:4px;height:20px;
+}
+
+	/*Phần bảng dọc bên trái*/	
+.tabledoc
+{ 
+	width:245px;  
+	border-collapse:collapse;border:solid 1px purple;
+	border-style:dotted;
+}
+.tieude
+{ text-align:center;color:White;
+  background-color:#5f9ae0; 
+  font-size:15px; font-weight:bold;padding:3px;
+  border:1px thin #5f9ae0;
+}				
+/*Phần chứa các điều khiển bến nội dung*/
+.theten
+{
+  border-width:0.01px; border-color:#5f9ae0;
+  border-style:solid;border-top:0px;border-right:0px;border-left:0px;
+  text-align:right; padding:5px;
+	}
+	/*dung cho phần hệ số lớp đông*/
+	.hesolopdong
+{
+  
+  text-align:center;
+	}
+.dieukhien
+{
+	padding:1px;border-width:0.01px;
+	 border-color:#6495ed;border-style:solid;
+	 border-top:0px;border-right:0px;
+	 text-align:left;
+}
+/*Thông tin cá nhân*/
+.buttonThoat{ text-align:right;position:absolute ;top:5px; right:5px; bottom:5px; left:10px;}
+.dongdieukhien{ padding:5px; font-size:16px; border:0px;}
+.nutdieukhien{ padding:5px; vertical-align:middle; display:block;             
+              }
+.dongtieude{border-bottom:1px; border-top:0px; border-right:0px; border-left:0px;
+            font-size:12px; padding-bottom:4px; padding-top:4px; background-color:#1e90ff;}
+    
+
+	    /*Phần style mới nhất*/
+	    /*Phần tiêu đề*/
+.noidungphanquantri
+{
+ text-align:left;color:White;
+  background-color:#5f9ae0; 
+  font-size:16px; font-weight:bold;padding:2px;
+  margin:2px;  
+  cursor:pointer; 
+  border:1px thin #5f9ae0;  
+  line-height:25px;
+  }
+  /*Phần nội dung con của tiêu đề quản trị*/
+  .chonquantri
+  {
+  color:White;
+  background-color:#5f9ae0; 
+  font-size:17px; font-weight:bold;padding:2px; 
+  cursor:pointer;  
+  border:1px thin #5f9ae0;
+  line-height:25px;
+ 
+  	}
+  	/*phần nội dung con cua quan tri*/
+  	.noidungcon
+  	{
+  		border:solid 1px purple;
+	border-style:dotted;
+  	}
+  	/*Style cho phần chứa link mục quản trị*/
+.Link
+{ font-family:Tahoma; font-size:14px;
+  text-decoration:none;color:#00008b;
+  line-height:30px;
+  padding:7px; 
+  border-top:none;  
+  border:1px thin #5f9ae0;
+}
+.Link:hover{color:Red; }
+
+/* Link đã được thăm
+.Link:visited{color:Purple;}*/
+/*Style cho lable thông báo */
+.LabelThongbao
+{
+	font-family:Times New Roman, .VnArial;
+	color:Red; text-align:left;font-size:15px;
+	font-weight:bold; padding-left:20px;
+	}
+	
+.link_grid
+{text-decoration:none;color:Black;text-align:center;
+	}
+	.link_grid:hover
+	{color:Blue; font-size:15px;
+		}
+/*Style cho trang doi mat khau*/
+.control
+{ border-bottom:0px; border-top:0px; border-right:0px; border-left:1px;
+  line-height: 28px;  padding-left: 3px; margin-left:0px;
+	}
+	.tieudetrongdoimatkhau
+	{
+		border:0px;line-height:28px;
+		}
