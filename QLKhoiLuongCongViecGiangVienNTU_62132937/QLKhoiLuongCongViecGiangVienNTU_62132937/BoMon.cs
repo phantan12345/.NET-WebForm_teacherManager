@@ -17,7 +17,7 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BoMon()
         {
-            this.GiaoVien = new HashSet<GiaoVien>();
+            this.GiaoViens = new HashSet<GiaoVien>();
         }
     
         public string MaBoMon { get; set; }
@@ -25,6 +25,6 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
         public string GhiChu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GiaoVien> GiaoVien { get; set; }
+        public virtual ICollection<GiaoVien> GiaoViens { get; set; }
     }
 }

@@ -14,16 +14,14 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
-
             if (Session.Contents["TrangThai"].ToString() == "DaDangNhap")
             {
                 var memberID = Session["MemberID"].ToString();
-                var dangNhap = Session["Dangnhap"].ToString();
+                var dangnhap = Session["Dangnhap"].ToString();
 
 
                 var tt = from c in ql.TaiKhoan
-                         where (c.TenDangNhap == dangNhap && c.MaGV.ToString() == memberID && c.MaGV == c.GiaoVien.MaGV)
+                         where (c.TenDangNhap == dangnhap && c.MaGV.ToString() == memberID && c.MaGV == c.GiaoVien.MaGV)
                          select new { c.MaGV, c.GiaoVien.TenGV, c.Quyen };
                 GiaoVien gv = ql.GiaoVien.Single(c => c.MaGV == memberID);
                 if (gv != null)

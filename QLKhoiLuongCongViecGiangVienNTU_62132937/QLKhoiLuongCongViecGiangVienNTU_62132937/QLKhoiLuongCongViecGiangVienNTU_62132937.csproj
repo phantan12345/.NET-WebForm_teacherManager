@@ -97,6 +97,10 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.35.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -227,15 +231,15 @@
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="NhapNhanVienTuExcel.aspx" />
-    <Content Include="QuanLyGiangVien.Context.tt">
+    <Content Include="QUANLYGIANGVIEN.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyGiangVien.edmx</DependentUpon>
-      <LastGenOutput>QuanLyGiangVien.Context.cs</LastGenOutput>
+      <DependentUpon>QUANLYGIANGVIEN.edmx</DependentUpon>
+      <LastGenOutput>QUANLYGIANGVIEN.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="QuanLyGiangVien.tt">
+    <Content Include="QUANLYGIANGVIEN.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyGiangVien.edmx</DependentUpon>
-      <LastGenOutput>QuanLyGiangVien.cs</LastGenOutput>
+      <DependentUpon>QUANLYGIANGVIEN.edmx</DependentUpon>
+      <LastGenOutput>QUANLYGIANGVIEN.cs</LastGenOutput>
     </Content>
     <Content Include="QuanLyPhongMay.aspx" />
     <Content Include="QuenMatKhau.aspx" />
@@ -272,7 +276,7 @@
       <DependentUpon>BoMon.aspx</DependentUpon>
     </Compile>
     <Compile Include="BoMon.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="ChaoMung.aspx.cs">
       <DependentUpon>ChaoMung.aspx</DependentUpon>
@@ -289,7 +293,8 @@
       <DependentUpon>ChucVu.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChucVu.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -306,7 +311,7 @@
       <DependentUpon>DoAnTotNghiep.aspx</DependentUpon>
     </Compile>
     <Compile Include="DoAnTotNghiep.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="DoiMatKhau.aspx.cs">
       <DependentUpon>DoiMatKhau.aspx</DependentUpon>
@@ -315,6 +320,7 @@
     <Compile Include="DoiMatKhau.aspx.designer.cs">
       <DependentUpon>DoiMatKhau.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ExecutedID.cs" />
     <Compile Include="GiangDay.aspx.cs">
       <DependentUpon>GiangDay.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -323,7 +329,7 @@
       <DependentUpon>GiangDay.aspx</DependentUpon>
     </Compile>
     <Compile Include="GiangDay.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="GiangVien.aspx.cs">
       <DependentUpon>GiangVien.aspx</DependentUpon>
@@ -333,7 +339,7 @@
       <DependentUpon>GiangVien.aspx</DependentUpon>
     </Compile>
     <Compile Include="GiaoVien.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="GiaoVienNCKH.aspx.cs">
       <DependentUpon>GiaoVienNCKH.aspx</DependentUpon>
@@ -343,7 +349,16 @@
       <DependentUpon>GiaoVienNCKH.aspx</DependentUpon>
     </Compile>
     <Compile Include="GiaoVienNCKH.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVien_NCKH_CapBo_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVien_NCKH_CapTruong_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVien_NCKH_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="GioChuan.aspx.cs">
       <DependentUpon>GioChuan.aspx</DependentUpon>
@@ -353,7 +368,7 @@
       <DependentUpon>GioChuan.aspx</DependentUpon>
     </Compile>
     <Compile Include="GioChuan.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="HeDaoTao.aspx.cs">
       <DependentUpon>HeDaoTao.aspx</DependentUpon>
@@ -363,7 +378,7 @@
       <DependentUpon>HeDaoTao.aspx</DependentUpon>
     </Compile>
     <Compile Include="HeDaoTao.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="HeSoLopDong.aspx.cs">
       <DependentUpon>HeSoLopDong.aspx</DependentUpon>
@@ -373,10 +388,10 @@
       <DependentUpon>HeSoLopDong.aspx</DependentUpon>
     </Compile>
     <Compile Include="HeSoLopDong.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="HocBSNangCao.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="HocNangCao.aspx.cs">
       <DependentUpon>HocNangCao.aspx</DependentUpon>
@@ -393,7 +408,34 @@
       <DependentUpon>HuongDanNCKH.aspx</DependentUpon>
     </Compile>
     <Compile Include="HuongDanNCKH.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LayTTDeSua_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoadDoAnTotNghiep1_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoadDoAnTotNghiep_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoadHocNangCao_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoadMonLyThuyet_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoadMonProject_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoadMonThucHanh_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoadMonTTSP_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoadMonTTXN_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="LoaiMon.aspx.cs">
       <DependentUpon>LoaiMon.aspx</DependentUpon>
@@ -403,7 +445,7 @@
       <DependentUpon>LoaiMon.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoaiMon.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
@@ -413,7 +455,7 @@
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Lop.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
@@ -423,7 +465,7 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="MonHoc.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="NhapNhanVienTuExcel.aspx.cs">
       <DependentUpon>NhapNhanVienTuExcel.aspx</DependentUpon>
@@ -432,23 +474,26 @@
     <Compile Include="NhapNhanVienTuExcel.aspx.designer.cs">
       <DependentUpon>NhapNhanVienTuExcel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Project_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
     <Compile Include="QLPhongMay.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyGiangVien.Context.cs">
+    <Compile Include="QUANLYGIANGVIEN.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyGiangVien.Context.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyGiangVien.cs">
+    <Compile Include="QUANLYGIANGVIEN.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyGiangVien.Designer.cs">
+    <Compile Include="QUANLYGIANGVIEN.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyGiangVien.edmx</DependentUpon>
+      <DependentUpon>QUANLYGIANGVIEN.edmx</DependentUpon>
     </Compile>
     <Compile Include="QuanLyPhongMay.aspx.cs">
       <DependentUpon>QuanLyPhongMay.aspx</DependentUpon>
@@ -464,9 +509,6 @@
     <Compile Include="QuenMatKhau.aspx.designer.cs">
       <DependentUpon>QuenMatKhau.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TaiKhoan.cs">
-      <DependentUpon>QuanLyGiangVien.tt</DependentUpon>
-    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -476,6 +518,72 @@
     </Compile>
     <Compile Include="MaHoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_HDNCKH_NamCuoi_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_HDNCKH_NamGanCuoi_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayLopDTNienCheDHCD_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayLopDTNienChe_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayLopDTTinChiDHCD_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayLopDTTinChi_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayLopLyThuyet_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayLopTHTCCN_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayLopThucHanhGV_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayMaLopLT_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayMaLopThucHanh_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LayThanhvien_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LoadGiangVienChucVu_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_LoadQuanLyPhongMay_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_QuenMatKhau_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_SuPham_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_Thongtincanhan_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="st_TTxiNghiep_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaiKhoan.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
     <Compile Include="TaoTaiKhoan.aspx.cs">
       <DependentUpon>TaoTaiKhoan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -490,12 +598,18 @@
     <Compile Include="ThongKeGiangDayTheoGiangVien.aspx.designer.cs">
       <DependentUpon>ThongKeGiangDayTheoGiangVien.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Thongke_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
+    </Compile>
     <Compile Include="ThongTinCaNhan.aspx.cs">
       <DependentUpon>ThongTinCaNhan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ThongTinCaNhan.aspx.designer.cs">
       <DependentUpon>ThongTinCaNhan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Thongtincanhan_Result.cs">
+      <DependentUpon>QUANLYGIANGVIEN.tt</DependentUpon>
     </Compile>
     <Compile Include="ThongTinLopHoc.aspx.cs">
       <DependentUpon>ThongTinLopHoc.aspx</DependentUpon>
@@ -515,12 +629,12 @@
   <ItemGroup>
     <Content Include="MasterPage.Master" />
     <None Include="packages.config" />
-    <EntityDeploy Include="QuanLyGiangVien.edmx">
+    <EntityDeploy Include="QUANLYGIANGVIEN.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QuanLyGiangVien.Designer.cs</LastGenOutput>
+      <LastGenOutput>QUANLYGIANGVIEN.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="QuanLyGiangVien.edmx.diagram">
-      <DependentUpon>QuanLyGiangVien.edmx</DependentUpon>
+    <Content Include="QUANLYGIANGVIEN.edmx.diagram">
+      <DependentUpon>QUANLYGIANGVIEN.edmx</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -534,6 +648,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="upload\" />
   </ItemGroup>
   <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">
     <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

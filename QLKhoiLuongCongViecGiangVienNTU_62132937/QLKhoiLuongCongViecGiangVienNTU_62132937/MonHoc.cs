@@ -17,7 +17,7 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MonHoc()
         {
-            this.GiangDay = new HashSet<GiangDay>();
+            this.GiangDays = new HashSet<GiangDay>();
         }
     
         public string MaHeDT { get; set; }
@@ -28,7 +28,7 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
         public string GhiChu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GiangDay> GiangDay { get; set; }
+        public virtual ICollection<GiangDay> GiangDays { get; set; }
         public virtual HeDaoTao HeDaoTao { get; set; }
         public virtual LoaiMon LoaiMon { get; set; }
     }

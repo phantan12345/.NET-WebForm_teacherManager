@@ -12,11 +12,13 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QUANLYGIANGVIENEntities2 : DbContext
     {
         public QUANLYGIANGVIENEntities2()
-            : base("name=QUANLYGIANGVIENEntities2")
+            : base("name=QUANLYGIANGVIEN1Entities2")
         {
         }
     
@@ -40,6 +42,516 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
         public virtual DbSet<Lop> Lop { get; set; }
         public virtual DbSet<MonHoc> MonHoc { get; set; }
         public virtual DbSet<QLPhongMay> QLPhongMay { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagram { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
+    
+        public virtual ObjectResult<GiaoVien_NCKH_Result> GiaoVien_NCKH(string magv)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GiaoVien_NCKH_Result>("GiaoVien_NCKH", magvParameter);
+        }
+    
+        public virtual ObjectResult<GiaoVien_NCKH_CapBo_Result> GiaoVien_NCKH_CapBo(string magv, string namNC)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namNCParameter = namNC != null ?
+                new ObjectParameter("namNC", namNC) :
+                new ObjectParameter("namNC", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GiaoVien_NCKH_CapBo_Result>("GiaoVien_NCKH_CapBo", magvParameter, namNCParameter);
+        }
+    
+        public virtual ObjectResult<GiaoVien_NCKH_CapTruong_Result> GiaoVien_NCKH_CapTruong(string magv, string namNC)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namNCParameter = namNC != null ?
+                new ObjectParameter("namNC", namNC) :
+                new ObjectParameter("namNC", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GiaoVien_NCKH_CapTruong_Result>("GiaoVien_NCKH_CapTruong", magvParameter, namNCParameter);
+        }
+    
+        public virtual ObjectResult<LayTTDeSua_Result> LayTTDeSua(Nullable<int> ma)
+        {
+            var maParameter = ma.HasValue ?
+                new ObjectParameter("ma", ma) :
+                new ObjectParameter("ma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LayTTDeSua_Result>("LayTTDeSua", maParameter);
+        }
+    
+        public virtual ObjectResult<LoadDoAnTotNghiep_Result> LoadDoAnTotNghiep(string maGV, string namHoc)
+        {
+            var maGVParameter = maGV != null ?
+                new ObjectParameter("maGV", maGV) :
+                new ObjectParameter("maGV", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoadDoAnTotNghiep_Result>("LoadDoAnTotNghiep", maGVParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<LoadDoAnTotNghiep1_Result> LoadDoAnTotNghiep1(string maGV)
+        {
+            var maGVParameter = maGV != null ?
+                new ObjectParameter("maGV", maGV) :
+                new ObjectParameter("maGV", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoadDoAnTotNghiep1_Result>("LoadDoAnTotNghiep1", maGVParameter);
+        }
+    
+        public virtual ObjectResult<LoadHocNangCao_Result> LoadHocNangCao(string maGV)
+        {
+            var maGVParameter = maGV != null ?
+                new ObjectParameter("maGV", maGV) :
+                new ObjectParameter("maGV", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoadHocNangCao_Result>("LoadHocNangCao", maGVParameter);
+        }
+    
+        public virtual ObjectResult<LoadMonLyThuyet_Result> LoadMonLyThuyet(string malop)
+        {
+            var malopParameter = malop != null ?
+                new ObjectParameter("malop", malop) :
+                new ObjectParameter("malop", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoadMonLyThuyet_Result>("LoadMonLyThuyet", malopParameter);
+        }
+    
+        public virtual ObjectResult<LoadMonProject_Result> LoadMonProject(string malop)
+        {
+            var malopParameter = malop != null ?
+                new ObjectParameter("malop", malop) :
+                new ObjectParameter("malop", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoadMonProject_Result>("LoadMonProject", malopParameter);
+        }
+    
+        public virtual ObjectResult<LoadMonThucHanh_Result> LoadMonThucHanh(string malop)
+        {
+            var malopParameter = malop != null ?
+                new ObjectParameter("malop", malop) :
+                new ObjectParameter("malop", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoadMonThucHanh_Result>("LoadMonThucHanh", malopParameter);
+        }
+    
+        public virtual ObjectResult<LoadMonTTSP_Result> LoadMonTTSP(string malop)
+        {
+            var malopParameter = malop != null ?
+                new ObjectParameter("malop", malop) :
+                new ObjectParameter("malop", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoadMonTTSP_Result>("LoadMonTTSP", malopParameter);
+        }
+    
+        public virtual ObjectResult<LoadMonTTXN_Result> LoadMonTTXN(string malop)
+        {
+            var malopParameter = malop != null ?
+                new ObjectParameter("malop", malop) :
+                new ObjectParameter("malop", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoadMonTTXN_Result>("LoadMonTTXN", malopParameter);
+        }
+    
+        public virtual ObjectResult<Project_Result> Project(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Project_Result>("Project", magvParameter, namHocParameter);
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<st_HDNCKH_NamCuoi_Result> st_HDNCKH_NamCuoi(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_HDNCKH_NamCuoi_Result>("st_HDNCKH_NamCuoi", magvParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<st_HDNCKH_NamGanCuoi_Result> st_HDNCKH_NamGanCuoi(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_HDNCKH_NamGanCuoi_Result>("st_HDNCKH_NamGanCuoi", magvParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<st_LayLopDTNienChe_Result> st_LayLopDTNienChe(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayLopDTNienChe_Result>("st_LayLopDTNienChe", magvParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<st_LayLopDTNienCheDHCD_Result> st_LayLopDTNienCheDHCD(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayLopDTNienCheDHCD_Result>("st_LayLopDTNienCheDHCD", magvParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<st_LayLopDTTinChi_Result> st_LayLopDTTinChi(string magv)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayLopDTTinChi_Result>("st_LayLopDTTinChi", magvParameter);
+        }
+    
+        public virtual ObjectResult<st_LayLopDTTinChiDHCD_Result> st_LayLopDTTinChiDHCD(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayLopDTTinChiDHCD_Result>("st_LayLopDTTinChiDHCD", magvParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<st_LayLopLyThuyet_Result> st_LayLopLyThuyet()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayLopLyThuyet_Result>("st_LayLopLyThuyet");
+        }
+    
+        public virtual ObjectResult<st_LayLopTHTCCN_Result> st_LayLopTHTCCN(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayLopTHTCCN_Result>("st_LayLopTHTCCN", magvParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<st_LayLopThucHanhGV_Result> st_LayLopThucHanhGV(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayLopThucHanhGV_Result>("st_LayLopThucHanhGV", magvParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<st_LayMaLopLT_Result> st_LayMaLopLT()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayMaLopLT_Result>("st_LayMaLopLT");
+        }
+    
+        public virtual ObjectResult<st_LayMaLopThucHanh_Result> st_LayMaLopThucHanh()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayMaLopThucHanh_Result>("st_LayMaLopThucHanh");
+        }
+    
+        public virtual ObjectResult<string> st_LayNamHoc(string magv)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("st_LayNamHoc", magvParameter);
+        }
+    
+        public virtual ObjectResult<st_LayThanhvien_Result> st_LayThanhvien()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LayThanhvien_Result>("st_LayThanhvien");
+        }
+    
+        public virtual ObjectResult<st_LoadGiangVienChucVu_Result> st_LoadGiangVienChucVu(string maGV)
+        {
+            var maGVParameter = maGV != null ?
+                new ObjectParameter("maGV", maGV) :
+                new ObjectParameter("maGV", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LoadGiangVienChucVu_Result>("st_LoadGiangVienChucVu", maGVParameter);
+        }
+    
+        public virtual ObjectResult<st_LoadQuanLyPhongMay_Result> st_LoadQuanLyPhongMay(string maGV, string namHoc)
+        {
+            var maGVParameter = maGV != null ?
+                new ObjectParameter("maGV", maGV) :
+                new ObjectParameter("maGV", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_LoadQuanLyPhongMay_Result>("st_LoadQuanLyPhongMay", maGVParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<st_QuenMatKhau_Result> st_QuenMatKhau(string tenDN, string email)
+        {
+            var tenDNParameter = tenDN != null ?
+                new ObjectParameter("tenDN", tenDN) :
+                new ObjectParameter("tenDN", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_QuenMatKhau_Result>("st_QuenMatKhau", tenDNParameter, emailParameter);
+        }
+    
+        public virtual ObjectResult<st_SuPham_Result> st_SuPham(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_SuPham_Result>("st_SuPham", magvParameter, namHocParameter);
+        }
+    
+        public virtual ObjectResult<st_Thongtincanhan_Result> st_Thongtincanhan(string tendangnhap)
+        {
+            var tendangnhapParameter = tendangnhap != null ?
+                new ObjectParameter("tendangnhap", tendangnhap) :
+                new ObjectParameter("tendangnhap", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_Thongtincanhan_Result>("st_Thongtincanhan", tendangnhapParameter);
+        }
+    
+        public virtual ObjectResult<st_TTxiNghiep_Result> st_TTxiNghiep(string magv, string namHoc)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_TTxiNghiep_Result>("st_TTxiNghiep", magvParameter, namHocParameter);
+        }
+    
+        public virtual int SuaHocVien(string ma, string namHoc, string ghiChu)
+        {
+            var maParameter = ma != null ?
+                new ObjectParameter("ma", ma) :
+                new ObjectParameter("ma", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("NamHoc", namHoc) :
+                new ObjectParameter("NamHoc", typeof(string));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuaHocVien", maParameter, namHocParameter, ghiChuParameter);
+        }
+    
+        public virtual int ThemHocVien(string maGV, string namHoc, string ghiChu)
+        {
+            var maGVParameter = maGV != null ?
+                new ObjectParameter("MaGV", maGV) :
+                new ObjectParameter("MaGV", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("NamHoc", namHoc) :
+                new ObjectParameter("NamHoc", typeof(string));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ThemHocVien", maGVParameter, namHocParameter, ghiChuParameter);
+        }
+    
+        public virtual ObjectResult<Thongke_Result> Thongke(string magv)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Thongke_Result>("Thongke", magvParameter);
+        }
+    
+        public virtual ObjectResult<Thongtincanhan_Result> Thongtincanhan(string tendangnhap)
+        {
+            var tendangnhapParameter = tendangnhap != null ?
+                new ObjectParameter("tendangnhap", tendangnhap) :
+                new ObjectParameter("tendangnhap", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Thongtincanhan_Result>("Thongtincanhan", tendangnhapParameter);
+        }
+    
+        public virtual ObjectResult<string> ThongTinHocNangCao(string maGV, string namHoc)
+        {
+            var maGVParameter = maGV != null ?
+                new ObjectParameter("maGV", maGV) :
+                new ObjectParameter("maGV", typeof(string));
+    
+            var namHocParameter = namHoc != null ?
+                new ObjectParameter("namHoc", namHoc) :
+                new ObjectParameter("namHoc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ThongTinHocNangCao", maGVParameter, namHocParameter);
+        }
+    
+        public virtual int XoaHocVien(string ma)
+        {
+            var maParameter = ma != null ?
+                new ObjectParameter("ma", ma) :
+                new ObjectParameter("ma", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("XoaHocVien", maParameter);
+        }
     }
 }

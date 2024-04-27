@@ -11,7 +11,6 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
+            Session.Contents["TrangThai"] = "ChuaDangNhap";        }
     }
 }

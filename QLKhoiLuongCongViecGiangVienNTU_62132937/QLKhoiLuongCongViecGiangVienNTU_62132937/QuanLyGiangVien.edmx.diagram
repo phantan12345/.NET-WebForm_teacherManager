@@ -4,39 +4,40 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7757a155df5e4ff892e68bde3b0629ca" Name="Diagram1">
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.BoMon" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.ChucVu" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.DoAnTotNghiep" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.GiangDay" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.GiaoVien" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.GiaoVienNCKH" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.GioChuan" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.HeDaoTao" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.HeSoLopDong" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.HocBSNangCao" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.HuongDanNCKH" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.LoaiMon" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.Lop" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.MonHoc" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.QLPhongMay" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QUANLYGIANGVIENModel.TaiKhoan" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_GiaoVien_BoMon" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_GiaoVien_ChucVu" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_DoAnTotNghiep_GiaoVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_DoAnTotNghiep_Lop" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_GiangDay_GiaoVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_GiangDay_Lop" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_GiangDay_MonHoc1" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_GiaoVien_GioChuan" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_GiaoVienNCKH_GiaoVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_HocNangCao_GiaoVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_HuongDanNCKH_GiaoVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_QLPhongMay_GiaoVien1" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_TaiKhoan_GiaoVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_Lop_HeDaoTao" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_MonHoc_HeDaoTao" ManuallyRouted="false" />
-        <AssociationConnector Association="QUANLYGIANGVIENModel.FK_MonHoc_LoaiMon" ManuallyRouted="false" />
+      <Diagram DiagramId="6aeb4581f3b845e3871fd652092b68b6" Name="Diagram1">
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.BoMon" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.ChucVu" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.DoAnTotNghiep" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.GiangDay" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.GiaoVien" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.GiaoVienNCKH" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.GioChuan" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.HeDaoTao" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.HeSoLopDong" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.HocBSNangCao" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.HuongDanNCKH" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.LoaiMon" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.Lop" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.MonHoc" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.QLPhongMay" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.sysdiagram" Width="1.5" PointX="5.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYGIANGVIEN1Model.TaiKhoan" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_GiaoVien_BoMon" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_GiaoVien_ChucVu" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_DoAnTotNghiep_GiaoVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_DoAnTotNghiep_Lop" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_GiangDay_GiaoVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_GiangDay_Lop" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_GiangDay_MonHoc1" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_GiaoVien_GioChuan" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_GiaoVienNCKH_GiaoVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_HocNangCao_GiaoVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_HuongDanNCKH_GiaoVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_QLPhongMay_GiaoVien1" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_TaiKhoan_GiaoVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_Lop_HeDaoTao" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_MonHoc_HeDaoTao" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYGIANGVIEN1Model.FK_MonHoc_LoaiMon" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

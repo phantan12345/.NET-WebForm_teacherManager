@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QUANLYGIANGVIENModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QUANLYGIANGVIEN1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BoMon">
           <Key>
             <PropertyRef Name="MaBoMon" />
@@ -166,6 +166,16 @@
           <Property Name="SoLuongPM" Type="int" Nullable="false" />
           <Property Name="NamHoc" Type="varchar" MaxLength="30" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -397,7 +407,164 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QUANLYGIANGVIENModelStoreContainer">
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GiaoVien_NCKH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GiaoVien_NCKH_CapBo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namNC" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GiaoVien_NCKH_CapTruong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namNC" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LayTTDeSua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LoadDoAnTotNghiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maGV" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoadDoAnTotNghiep1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maGV" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoadHocNangCao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maGV" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoadMonLyThuyet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="malop" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoadMonProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="malop" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoadMonThucHanh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="malop" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoadMonTTSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="malop" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoadMonTTXN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="malop" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Project" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="st_HDNCKH_NamCuoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_HDNCKH_NamGanCuoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_LayLopDTNienChe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_LayLopDTNienCheDHCD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_LayLopDTTinChi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_LayLopDTTinChiDHCD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_LayLopLyThuyet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="st_LayLopTHTCCN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_LayLopThucHanhGV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_LayMaLopLT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="st_LayMaLopThucHanh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="st_LayNamHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_LayThanhvien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="st_LoadGiangVienChucVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maGV" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_LoadQuanLyPhongMay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maGV" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_QuenMatKhau" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenDN" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="st_SuPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_Thongtincanhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tendangnhap" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_TTxiNghiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SuaHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma" Type="varchar" Mode="In" />
+          <Parameter Name="NamHoc" Type="varchar" Mode="In" />
+          <Parameter Name="GhiChu" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ThemHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaGV" Type="varchar" Mode="In" />
+          <Parameter Name="NamHoc" Type="varchar" Mode="In" />
+          <Parameter Name="GhiChu" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Thongke" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="magv" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Thongtincanhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tendangnhap" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ThongTinHocNangCao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maGV" Type="varchar" Mode="In" />
+          <Parameter Name="namHoc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="XoaHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="QUANLYGIANGVIEN1ModelStoreContainer">
           <EntitySet Name="BoMon" EntityType="Self.BoMon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChucVu" EntityType="Self.ChucVu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DoAnTotNghiep" EntityType="Self.DoAnTotNghiep" Schema="dbo" store:Type="Tables" />
@@ -413,6 +580,7 @@
           <EntitySet Name="Lop" EntityType="Self.Lop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QLPhongMay" EntityType="Self.QLPhongMay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_DoAnTotNghiep_GiaoVien" Association="Self.FK_DoAnTotNghiep_GiaoVien">
             <End Role="GiaoVien" EntitySet="GiaoVien" />
@@ -479,11 +647,10 @@
             <End Role="TaiKhoan" EntitySet="TaiKhoan" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QUANLYGIANGVIENModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="QUANLYGIANGVIEN1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BoMon">
           <Key>
             <PropertyRef Name="MaBoMon" />
@@ -491,7 +658,7 @@
           <Property Name="MaBoMon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenBoMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="GiaoVien" Relationship="Self.FK_GiaoVien_BoMon" FromRole="BoMon" ToRole="GiaoVien" />
+          <NavigationProperty Name="GiaoViens" Relationship="Self.FK_GiaoVien_BoMon" FromRole="BoMon" ToRole="GiaoVien" />
         </EntityType>
         <EntityType Name="ChucVu">
           <Key>
@@ -501,7 +668,7 @@
           <Property Name="TenChucVu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PhanTramDuocGiam" Type="Int32" />
           <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="GiaoVien" Relationship="Self.FK_GiaoVien_ChucVu" FromRole="ChucVu" ToRole="GiaoVien" />
+          <NavigationProperty Name="GiaoViens" Relationship="Self.FK_GiaoVien_ChucVu" FromRole="ChucVu" ToRole="GiaoVien" />
         </EntityType>
         <EntityType Name="DoAnTotNghiep">
           <Key>
@@ -555,14 +722,14 @@
           <Property Name="MaBoMon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BoMon" Relationship="Self.FK_GiaoVien_BoMon" FromRole="GiaoVien" ToRole="BoMon" />
           <NavigationProperty Name="ChucVu" Relationship="Self.FK_GiaoVien_ChucVu" FromRole="GiaoVien" ToRole="ChucVu" />
-          <NavigationProperty Name="DoAnTotNghiep" Relationship="Self.FK_DoAnTotNghiep_GiaoVien" FromRole="GiaoVien" ToRole="DoAnTotNghiep" />
-          <NavigationProperty Name="GiangDay" Relationship="Self.FK_GiangDay_GiaoVien" FromRole="GiaoVien" ToRole="GiangDay" />
+          <NavigationProperty Name="DoAnTotNghieps" Relationship="Self.FK_DoAnTotNghiep_GiaoVien" FromRole="GiaoVien" ToRole="DoAnTotNghiep" />
+          <NavigationProperty Name="GiangDays" Relationship="Self.FK_GiangDay_GiaoVien" FromRole="GiaoVien" ToRole="GiangDay" />
           <NavigationProperty Name="GioChuan" Relationship="Self.FK_GiaoVien_GioChuan" FromRole="GiaoVien" ToRole="GioChuan" />
-          <NavigationProperty Name="GiaoVienNCKH" Relationship="Self.FK_GiaoVienNCKH_GiaoVien" FromRole="GiaoVien" ToRole="GiaoVienNCKH" />
-          <NavigationProperty Name="HocBSNangCao" Relationship="Self.FK_HocNangCao_GiaoVien" FromRole="GiaoVien" ToRole="HocBSNangCao" />
-          <NavigationProperty Name="HuongDanNCKH" Relationship="Self.FK_HuongDanNCKH_GiaoVien" FromRole="GiaoVien" ToRole="HuongDanNCKH" />
-          <NavigationProperty Name="QLPhongMay" Relationship="Self.FK_QLPhongMay_GiaoVien1" FromRole="GiaoVien" ToRole="QLPhongMay" />
-          <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_TaiKhoan_GiaoVien" FromRole="GiaoVien" ToRole="TaiKhoan" />
+          <NavigationProperty Name="GiaoVienNCKHs" Relationship="Self.FK_GiaoVienNCKH_GiaoVien" FromRole="GiaoVien" ToRole="GiaoVienNCKH" />
+          <NavigationProperty Name="HocBSNangCaos" Relationship="Self.FK_HocNangCao_GiaoVien" FromRole="GiaoVien" ToRole="HocBSNangCao" />
+          <NavigationProperty Name="HuongDanNCKHs" Relationship="Self.FK_HuongDanNCKH_GiaoVien" FromRole="GiaoVien" ToRole="HuongDanNCKH" />
+          <NavigationProperty Name="QLPhongMays" Relationship="Self.FK_QLPhongMay_GiaoVien1" FromRole="GiaoVien" ToRole="QLPhongMay" />
+          <NavigationProperty Name="TaiKhoans" Relationship="Self.FK_TaiKhoan_GiaoVien" FromRole="GiaoVien" ToRole="TaiKhoan" />
         </EntityType>
         <EntityType Name="GiaoVienNCKH">
           <Key>
@@ -584,7 +751,7 @@
           <Property Name="TenChucDanh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SoGioChuan" Type="Int32" />
           <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="GiaoVien" Relationship="Self.FK_GiaoVien_GioChuan" FromRole="GioChuan" ToRole="GiaoVien" />
+          <NavigationProperty Name="GiaoViens" Relationship="Self.FK_GiaoVien_GioChuan" FromRole="GioChuan" ToRole="GiaoVien" />
         </EntityType>
         <EntityType Name="HeDaoTao">
           <Key>
@@ -594,8 +761,8 @@
           <Property Name="TenHeDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SoBuoiTren1DVHocTrinh" Type="Int32" />
           <Property Name="GhiChu" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Lop" Relationship="Self.FK_Lop_HeDaoTao" FromRole="HeDaoTao" ToRole="Lop" />
-          <NavigationProperty Name="MonHoc" Relationship="Self.FK_MonHoc_HeDaoTao" FromRole="HeDaoTao" ToRole="MonHoc" />
+          <NavigationProperty Name="Lops" Relationship="Self.FK_Lop_HeDaoTao" FromRole="HeDaoTao" ToRole="Lop" />
+          <NavigationProperty Name="MonHocs" Relationship="Self.FK_MonHoc_HeDaoTao" FromRole="HeDaoTao" ToRole="MonHoc" />
         </EntityType>
         <EntityType Name="HeSoLopDong">
           <Key>
@@ -636,7 +803,7 @@
           <Property Name="MaLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenLoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MonHoc" Relationship="Self.FK_MonHoc_LoaiMon" FromRole="LoaiMon" ToRole="MonHoc" />
+          <NavigationProperty Name="MonHocs" Relationship="Self.FK_MonHoc_LoaiMon" FromRole="LoaiMon" ToRole="MonHoc" />
         </EntityType>
         <EntityType Name="Lop">
           <Key>
@@ -648,8 +815,8 @@
           <Property Name="SiSo" Type="Int32" />
           <Property Name="HinhThucDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DoAnTotNghiep" Relationship="Self.FK_DoAnTotNghiep_Lop" FromRole="Lop" ToRole="DoAnTotNghiep" />
-          <NavigationProperty Name="GiangDay" Relationship="Self.FK_GiangDay_Lop" FromRole="Lop" ToRole="GiangDay" />
+          <NavigationProperty Name="DoAnTotNghieps" Relationship="Self.FK_DoAnTotNghiep_Lop" FromRole="Lop" ToRole="DoAnTotNghiep" />
+          <NavigationProperty Name="GiangDays" Relationship="Self.FK_GiangDay_Lop" FromRole="Lop" ToRole="GiangDay" />
           <NavigationProperty Name="HeDaoTao" Relationship="Self.FK_Lop_HeDaoTao" FromRole="Lop" ToRole="HeDaoTao" />
         </EntityType>
         <EntityType Name="MonHoc">
@@ -662,7 +829,7 @@
           <Property Name="TenMon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="SoTiet" Type="Int32" Nullable="false" />
           <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="GiangDay" Relationship="Self.FK_GiangDay_MonHoc1" FromRole="MonHoc" ToRole="GiangDay" />
+          <NavigationProperty Name="GiangDays" Relationship="Self.FK_GiangDay_MonHoc1" FromRole="MonHoc" ToRole="GiangDay" />
           <NavigationProperty Name="HeDaoTao" Relationship="Self.FK_MonHoc_HeDaoTao" FromRole="MonHoc" ToRole="HeDaoTao" />
           <NavigationProperty Name="LoaiMon" Relationship="Self.FK_MonHoc_LoaiMon" FromRole="MonHoc" ToRole="LoaiMon" />
         </EntityType>
@@ -676,6 +843,16 @@
           <Property Name="NamHoc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="GiaoVien" Relationship="Self.FK_QLPhongMay_GiaoVien1" FromRole="QLPhongMay" ToRole="GiaoVien" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -908,96 +1085,547 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QUANLYGIANGVIENEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BoMon" EntityType="Self.BoMon" />
-          <EntitySet Name="ChucVu" EntityType="Self.ChucVu" />
-          <EntitySet Name="DoAnTotNghiep" EntityType="Self.DoAnTotNghiep" />
-          <EntitySet Name="GiangDay" EntityType="Self.GiangDay" />
-          <EntitySet Name="GiaoVien" EntityType="Self.GiaoVien" />
-          <EntitySet Name="GiaoVienNCKH" EntityType="Self.GiaoVienNCKH" />
-          <EntitySet Name="GioChuan" EntityType="Self.GioChuan" />
-          <EntitySet Name="HeDaoTao" EntityType="Self.HeDaoTao" />
-          <EntitySet Name="HeSoLopDong" EntityType="Self.HeSoLopDong" />
-          <EntitySet Name="HocBSNangCao" EntityType="Self.HocBSNangCao" />
-          <EntitySet Name="HuongDanNCKH" EntityType="Self.HuongDanNCKH" />
-          <EntitySet Name="LoaiMon" EntityType="Self.LoaiMon" />
-          <EntitySet Name="Lop" EntityType="Self.Lop" />
-          <EntitySet Name="MonHoc" EntityType="Self.MonHoc" />
-          <EntitySet Name="QLPhongMay" EntityType="Self.QLPhongMay" />
-          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" />
+        <EntityContainer Name="QUANLYGIANGVIEN1Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BoMons" EntityType="Self.BoMon" />
+          <EntitySet Name="ChucVus" EntityType="Self.ChucVu" />
+          <EntitySet Name="DoAnTotNghieps" EntityType="Self.DoAnTotNghiep" />
+          <EntitySet Name="GiangDays" EntityType="Self.GiangDay" />
+          <EntitySet Name="GiaoViens" EntityType="Self.GiaoVien" />
+          <EntitySet Name="GiaoVienNCKHs" EntityType="Self.GiaoVienNCKH" />
+          <EntitySet Name="GioChuans" EntityType="Self.GioChuan" />
+          <EntitySet Name="HeDaoTaos" EntityType="Self.HeDaoTao" />
+          <EntitySet Name="HeSoLopDongs" EntityType="Self.HeSoLopDong" />
+          <EntitySet Name="HocBSNangCaos" EntityType="Self.HocBSNangCao" />
+          <EntitySet Name="HuongDanNCKHs" EntityType="Self.HuongDanNCKH" />
+          <EntitySet Name="LoaiMons" EntityType="Self.LoaiMon" />
+          <EntitySet Name="Lops" EntityType="Self.Lop" />
+          <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
+          <EntitySet Name="QLPhongMays" EntityType="Self.QLPhongMay" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
           <AssociationSet Name="FK_GiaoVien_BoMon" Association="Self.FK_GiaoVien_BoMon">
-            <End Role="BoMon" EntitySet="BoMon" />
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
+            <End Role="BoMon" EntitySet="BoMons" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
           </AssociationSet>
           <AssociationSet Name="FK_GiaoVien_ChucVu" Association="Self.FK_GiaoVien_ChucVu">
-            <End Role="ChucVu" EntitySet="ChucVu" />
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
+            <End Role="ChucVu" EntitySet="ChucVus" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
           </AssociationSet>
           <AssociationSet Name="FK_DoAnTotNghiep_GiaoVien" Association="Self.FK_DoAnTotNghiep_GiaoVien">
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
-            <End Role="DoAnTotNghiep" EntitySet="DoAnTotNghiep" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="DoAnTotNghiep" EntitySet="DoAnTotNghieps" />
           </AssociationSet>
           <AssociationSet Name="FK_DoAnTotNghiep_Lop" Association="Self.FK_DoAnTotNghiep_Lop">
-            <End Role="Lop" EntitySet="Lop" />
-            <End Role="DoAnTotNghiep" EntitySet="DoAnTotNghiep" />
+            <End Role="Lop" EntitySet="Lops" />
+            <End Role="DoAnTotNghiep" EntitySet="DoAnTotNghieps" />
           </AssociationSet>
           <AssociationSet Name="FK_GiangDay_GiaoVien" Association="Self.FK_GiangDay_GiaoVien">
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
-            <End Role="GiangDay" EntitySet="GiangDay" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="GiangDay" EntitySet="GiangDays" />
           </AssociationSet>
           <AssociationSet Name="FK_GiangDay_Lop" Association="Self.FK_GiangDay_Lop">
-            <End Role="Lop" EntitySet="Lop" />
-            <End Role="GiangDay" EntitySet="GiangDay" />
+            <End Role="Lop" EntitySet="Lops" />
+            <End Role="GiangDay" EntitySet="GiangDays" />
           </AssociationSet>
           <AssociationSet Name="FK_GiangDay_MonHoc1" Association="Self.FK_GiangDay_MonHoc1">
-            <End Role="MonHoc" EntitySet="MonHoc" />
-            <End Role="GiangDay" EntitySet="GiangDay" />
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="GiangDay" EntitySet="GiangDays" />
           </AssociationSet>
           <AssociationSet Name="FK_GiaoVien_GioChuan" Association="Self.FK_GiaoVien_GioChuan">
-            <End Role="GioChuan" EntitySet="GioChuan" />
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
+            <End Role="GioChuan" EntitySet="GioChuans" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
           </AssociationSet>
           <AssociationSet Name="FK_GiaoVienNCKH_GiaoVien" Association="Self.FK_GiaoVienNCKH_GiaoVien">
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
-            <End Role="GiaoVienNCKH" EntitySet="GiaoVienNCKH" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="GiaoVienNCKH" EntitySet="GiaoVienNCKHs" />
           </AssociationSet>
           <AssociationSet Name="FK_HocNangCao_GiaoVien" Association="Self.FK_HocNangCao_GiaoVien">
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
-            <End Role="HocBSNangCao" EntitySet="HocBSNangCao" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="HocBSNangCao" EntitySet="HocBSNangCaos" />
           </AssociationSet>
           <AssociationSet Name="FK_HuongDanNCKH_GiaoVien" Association="Self.FK_HuongDanNCKH_GiaoVien">
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
-            <End Role="HuongDanNCKH" EntitySet="HuongDanNCKH" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="HuongDanNCKH" EntitySet="HuongDanNCKHs" />
           </AssociationSet>
           <AssociationSet Name="FK_QLPhongMay_GiaoVien1" Association="Self.FK_QLPhongMay_GiaoVien1">
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
-            <End Role="QLPhongMay" EntitySet="QLPhongMay" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="QLPhongMay" EntitySet="QLPhongMays" />
           </AssociationSet>
           <AssociationSet Name="FK_TaiKhoan_GiaoVien" Association="Self.FK_TaiKhoan_GiaoVien">
-            <End Role="GiaoVien" EntitySet="GiaoVien" />
-            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
           </AssociationSet>
           <AssociationSet Name="FK_Lop_HeDaoTao" Association="Self.FK_Lop_HeDaoTao">
-            <End Role="HeDaoTao" EntitySet="HeDaoTao" />
-            <End Role="Lop" EntitySet="Lop" />
+            <End Role="HeDaoTao" EntitySet="HeDaoTaos" />
+            <End Role="Lop" EntitySet="Lops" />
           </AssociationSet>
           <AssociationSet Name="FK_MonHoc_HeDaoTao" Association="Self.FK_MonHoc_HeDaoTao">
-            <End Role="HeDaoTao" EntitySet="HeDaoTao" />
-            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="HeDaoTao" EntitySet="HeDaoTaos" />
+            <End Role="MonHoc" EntitySet="MonHocs" />
           </AssociationSet>
           <AssociationSet Name="FK_MonHoc_LoaiMon" Association="Self.FK_MonHoc_LoaiMon">
-            <End Role="LoaiMon" EntitySet="LoaiMon" />
-            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="LoaiMon" EntitySet="LoaiMons" />
+            <End Role="MonHoc" EntitySet="MonHocs" />
           </AssociationSet>
+          <FunctionImport Name="GiaoVien_NCKH" ReturnType="Collection(QUANLYGIANGVIEN1Model.GiaoVien_NCKH_Result)">
+          <Parameter Name="magv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GiaoVien_NCKH_CapBo" ReturnType="Collection(QUANLYGIANGVIEN1Model.GiaoVien_NCKH_CapBo_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namNC" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GiaoVien_NCKH_CapTruong" ReturnType="Collection(QUANLYGIANGVIEN1Model.GiaoVien_NCKH_CapTruong_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namNC" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LayTTDeSua" ReturnType="Collection(QUANLYGIANGVIEN1Model.LayTTDeSua_Result)">
+          <Parameter Name="ma" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LoadDoAnTotNghiep" ReturnType="Collection(QUANLYGIANGVIEN1Model.LoadDoAnTotNghiep_Result)">
+            <Parameter Name="maGV" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoadDoAnTotNghiep1" ReturnType="Collection(QUANLYGIANGVIEN1Model.LoadDoAnTotNghiep1_Result)">
+          <Parameter Name="maGV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoadHocNangCao" ReturnType="Collection(QUANLYGIANGVIEN1Model.LoadHocNangCao_Result)">
+          <Parameter Name="maGV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoadMonLyThuyet" ReturnType="Collection(QUANLYGIANGVIEN1Model.LoadMonLyThuyet_Result)">
+          <Parameter Name="malop" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoadMonProject" ReturnType="Collection(QUANLYGIANGVIEN1Model.LoadMonProject_Result)">
+          <Parameter Name="malop" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoadMonThucHanh" ReturnType="Collection(QUANLYGIANGVIEN1Model.LoadMonThucHanh_Result)">
+          <Parameter Name="malop" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoadMonTTSP" ReturnType="Collection(QUANLYGIANGVIEN1Model.LoadMonTTSP_Result)">
+          <Parameter Name="malop" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoadMonTTXN" ReturnType="Collection(QUANLYGIANGVIEN1Model.LoadMonTTXN_Result)">
+          <Parameter Name="malop" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Project" ReturnType="Collection(QUANLYGIANGVIEN1Model.Project_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QUANLYGIANGVIEN1Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QUANLYGIANGVIEN1Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="st_HDNCKH_NamCuoi" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_HDNCKH_NamCuoi_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_HDNCKH_NamGanCuoi" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_HDNCKH_NamGanCuoi_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_LayLopDTNienChe" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayLopDTNienChe_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_LayLopDTNienCheDHCD" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayLopDTNienCheDHCD_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_LayLopDTTinChi" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayLopDTTinChi_Result)">
+          <Parameter Name="magv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_LayLopDTTinChiDHCD" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayLopDTTinChiDHCD_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_LayLopLyThuyet" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayLopLyThuyet_Result)" />
+          <FunctionImport Name="st_LayLopTHTCCN" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayLopTHTCCN_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_LayLopThucHanhGV" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayLopThucHanhGV_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_LayMaLopLT" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayMaLopLT_Result)" />
+          <FunctionImport Name="st_LayMaLopThucHanh" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayMaLopThucHanh_Result)" />
+          <FunctionImport Name="st_LayNamHoc" ReturnType="Collection(String)">
+          <Parameter Name="magv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_LayThanhvien" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LayThanhvien_Result)" />
+          <FunctionImport Name="st_LoadGiangVienChucVu" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LoadGiangVienChucVu_Result)">
+          <Parameter Name="maGV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_LoadQuanLyPhongMay" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_LoadQuanLyPhongMay_Result)">
+            <Parameter Name="maGV" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_QuenMatKhau" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_QuenMatKhau_Result)">
+            <Parameter Name="tenDN" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_SuPham" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_SuPham_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_Thongtincanhan" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_Thongtincanhan_Result)">
+          <Parameter Name="tendangnhap" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_TTxiNghiep" ReturnType="Collection(QUANLYGIANGVIEN1Model.st_TTxiNghiep_Result)">
+            <Parameter Name="magv" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SuaHocVien">
+            <Parameter Name="ma" Mode="In" Type="String" />
+            <Parameter Name="NamHoc" Mode="In" Type="String" />
+            <Parameter Name="GhiChu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ThemHocVien">
+            <Parameter Name="MaGV" Mode="In" Type="String" />
+            <Parameter Name="NamHoc" Mode="In" Type="String" />
+            <Parameter Name="GhiChu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Thongke" ReturnType="Collection(QUANLYGIANGVIEN1Model.Thongke_Result)">
+          <Parameter Name="magv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Thongtincanhan" ReturnType="Collection(QUANLYGIANGVIEN1Model.Thongtincanhan_Result)">
+          <Parameter Name="tendangnhap" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ThongTinHocNangCao" ReturnType="Collection(String)">
+            <Parameter Name="maGV" Mode="In" Type="String" />
+            <Parameter Name="namHoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="XoaHocVien">
+          <Parameter Name="ma" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="GiaoVien_NCKH_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenDeTai" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Cap" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NamThamGiaNC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MaDeTai" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GiaoVien_NCKH_CapBo_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenDeTai" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Cap" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NamThamGiaNC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MaDeTai" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GiaoVien_NCKH_CapTruong_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenDeTai" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Cap" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NamThamGiaNC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MaDeTai" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="LayTTDeSua_Result">
+          <Property Type="Int32" Name="Ma" Nullable="false" />
+          <Property Type="String" Name="MaGV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NamHoc" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="LoadDoAnTotNghiep_Result">
+          <Property Type="Int32" Name="Ma" Nullable="false" />
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SoBuoiChamBai" Nullable="true" />
+          <Property Type="Int32" Name="SoDeTai" Nullable="true" />
+          <Property Type="Int32" Name="SoDoAnPBien" Nullable="true" />
+          <Property Type="String" Name="NamHoc" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TenGV" Nullable="true" MaxLength="100" />
+          </ComplexType>
+        <ComplexType Name="LoadDoAnTotNghiep1_Result">
+          <Property Type="Int32" Name="Ma" Nullable="false" />
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SoBuoiChamBai" Nullable="true" />
+          <Property Type="Int32" Name="SoDeTai" Nullable="true" />
+          <Property Type="Int32" Name="SoDoAnPBien" Nullable="true" />
+          <Property Type="String" Name="NamHoc" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MaGV1" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenGV" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MaLop1" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLop1" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="LoadHocNangCao_Result">
+          <Property Type="Int32" Name="Ma" Nullable="false" />
+          <Property Type="String" Name="MaGV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NamHoc" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TenGV" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="LoadMonLyThuyet_Result">
+          <Property Type="String" Name="MaMon" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MaHeDT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="LoadMonProject_Result">
+          <Property Type="String" Name="MaMon" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MaHeDT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="LoadMonThucHanh_Result">
+          <Property Type="String" Name="MaMon" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MaHeDT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="LoadMonTTSP_Result">
+          <Property Type="String" Name="MaMon" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MaHeDT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="LoadMonTTXN_Result">
+          <Property Type="String" Name="MaMon" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MaHeDT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Project_Result">
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoSV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="st_HDNCKH_NamCuoi_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SVNam" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SoLuong" Nullable="false" />
+          <Property Type="String" Name="NamHoc" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="st_HDNCKH_NamGanCuoi_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SVNam" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SoLuong" Nullable="false" />
+          <Property Type="String" Name="NamHoc" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="st_LayLopDTNienChe_Result">
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoSV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_LayLopDTNienCheDHCD_Result">
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoSV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_LayLopDTTinChi_Result">
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoSV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_LayLopDTTinChiDHCD_Result">
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoSV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_LayLopLyThuyet_Result">
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_LayLopTHTCCN_Result">
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoSV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_LayLopThucHanhGV_Result">
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoBuoiTren1DVHocTrinh" Nullable="true" />
+          <Property Type="String" Name="MaHDT" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="SoSV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_LayMaLopLT_Result">
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MaHeDT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="st_LayMaLopThucHanh_Result">
+          <Property Type="String" Name="MaLop" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MaHeDT" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="st_LayThanhvien_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenGV" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="st_LoadGiangVienChucVu_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenGV" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MaChucVu" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="PhanTramDuocGiam" Nullable="true" />
+          <Property Type="String" Name="TenChucVu" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MaChucDanh" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="SoGioChuan" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_LoadQuanLyPhongMay_Result">
+          <Property Type="String" Name="MaQL" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="SoLuongPM" Nullable="false" />
+          <Property Type="String" Name="NamHoc" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="st_QuenMatKhau_Result">
+          <Property Type="String" Name="tendangnhap" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="matkhau" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="st_SuPham_Result">
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoSV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_Thongtincanhan_Result">
+          <Property Type="String" Name="magv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tendangnhap" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tengv" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="gioitinh" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="ngaysinh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="socmtnd" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="trinhdohocvan" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="machucdanh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="machucvu" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="namvaolam" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="diachi" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ghichu" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="tenchucdanh" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="tenchucvu" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="mabomon" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tenbomon" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="st_TTxiNghiep_Result">
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="SoSV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Thongke_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenGV" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TenLop" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SiSo" Nullable="true" />
+          <Property Type="String" Name="HinhThucDT" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SoTiet" Nullable="false" />
+          <Property Type="String" Name="TenHeDT" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TenMon" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="Thongtincanhan_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenDangNhap" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MatKhau" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quyen" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="NgayTaoTK" Nullable="true" Precision="23" />
+          <Property Type="String" Name="MaGV1" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenGV" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="GioiTinh" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoCMTND" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Anh" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="TrinhDoHocVan" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MaChucDanh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MaChucVu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NamVaoLam" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="DienThoai" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="GhiChu" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MaBoMon" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="machucdanh1" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tenchucdanh" Nullable="true" MaxLength="100" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QUANLYGIANGVIENModelStoreContainer" CdmEntityContainer="QUANLYGIANGVIENEntities2">
-          <EntitySetMapping Name="BoMon">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.BoMon">
+        <EntityContainerMapping StorageEntityContainer="QUANLYGIANGVIEN1ModelStoreContainer" CdmEntityContainer="QUANLYGIANGVIEN1Entities2">
+          <EntitySetMapping Name="BoMons">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.BoMon">
               <MappingFragment StoreEntitySet="BoMon">
                 <ScalarProperty Name="MaBoMon" ColumnName="MaBoMon" />
                 <ScalarProperty Name="TenBoMon" ColumnName="TenBoMon" />
@@ -1005,8 +1633,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ChucVu">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.ChucVu">
+          <EntitySetMapping Name="ChucVus">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.ChucVu">
               <MappingFragment StoreEntitySet="ChucVu">
                 <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
                 <ScalarProperty Name="TenChucVu" ColumnName="TenChucVu" />
@@ -1015,8 +1643,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DoAnTotNghiep">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.DoAnTotNghiep">
+          <EntitySetMapping Name="DoAnTotNghieps">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.DoAnTotNghiep">
               <MappingFragment StoreEntitySet="DoAnTotNghiep">
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
                 <ScalarProperty Name="MaLop" ColumnName="MaLop" />
@@ -1029,8 +1657,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GiangDay">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.GiangDay">
+          <EntitySetMapping Name="GiangDays">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.GiangDay">
               <MappingFragment StoreEntitySet="GiangDay">
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
                 <ScalarProperty Name="MaLop" ColumnName="MaLop" />
@@ -1041,8 +1669,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GiaoVien">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.GiaoVien">
+          <EntitySetMapping Name="GiaoViens">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.GiaoVien">
               <MappingFragment StoreEntitySet="GiaoVien">
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
                 <ScalarProperty Name="TenGV" ColumnName="TenGV" />
@@ -1062,8 +1690,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GiaoVienNCKH">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.GiaoVienNCKH">
+          <EntitySetMapping Name="GiaoVienNCKHs">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.GiaoVienNCKH">
               <MappingFragment StoreEntitySet="GiaoVienNCKH">
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
                 <ScalarProperty Name="MaDeTai" ColumnName="MaDeTai" />
@@ -1074,8 +1702,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GioChuan">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.GioChuan">
+          <EntitySetMapping Name="GioChuans">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.GioChuan">
               <MappingFragment StoreEntitySet="GioChuan">
                 <ScalarProperty Name="MaChucDanh" ColumnName="MaChucDanh" />
                 <ScalarProperty Name="TenChucDanh" ColumnName="TenChucDanh" />
@@ -1084,8 +1712,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HeDaoTao">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.HeDaoTao">
+          <EntitySetMapping Name="HeDaoTaos">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.HeDaoTao">
               <MappingFragment StoreEntitySet="HeDaoTao">
                 <ScalarProperty Name="MaHDT" ColumnName="MaHDT" />
                 <ScalarProperty Name="TenHeDT" ColumnName="TenHeDT" />
@@ -1094,8 +1722,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HeSoLopDong">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.HeSoLopDong">
+          <EntitySetMapping Name="HeSoLopDongs">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.HeSoLopDong">
               <MappingFragment StoreEntitySet="HeSoLopDong">
                 <ScalarProperty Name="MaHSLopDong" ColumnName="MaHSLopDong" />
                 <ScalarProperty Name="Tu" ColumnName="Tu" />
@@ -1105,8 +1733,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HocBSNangCao">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.HocBSNangCao">
+          <EntitySetMapping Name="HocBSNangCaos">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.HocBSNangCao">
               <MappingFragment StoreEntitySet="HocBSNangCao">
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
@@ -1115,8 +1743,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HuongDanNCKH">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.HuongDanNCKH">
+          <EntitySetMapping Name="HuongDanNCKHs">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.HuongDanNCKH">
               <MappingFragment StoreEntitySet="HuongDanNCKH">
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
@@ -1127,8 +1755,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LoaiMon">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.LoaiMon">
+          <EntitySetMapping Name="LoaiMons">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.LoaiMon">
               <MappingFragment StoreEntitySet="LoaiMon">
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
                 <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
@@ -1136,8 +1764,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Lop">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.Lop">
+          <EntitySetMapping Name="Lops">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.Lop">
               <MappingFragment StoreEntitySet="Lop">
                 <ScalarProperty Name="MaHeDT" ColumnName="MaHeDT" />
                 <ScalarProperty Name="MaLop" ColumnName="MaLop" />
@@ -1148,8 +1776,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MonHoc">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.MonHoc">
+          <EntitySetMapping Name="MonHocs">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.MonHoc">
               <MappingFragment StoreEntitySet="MonHoc">
                 <ScalarProperty Name="MaHeDT" ColumnName="MaHeDT" />
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
@@ -1160,8 +1788,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="QLPhongMay">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.QLPhongMay">
+          <EntitySetMapping Name="QLPhongMays">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.QLPhongMay">
               <MappingFragment StoreEntitySet="QLPhongMay">
                 <ScalarProperty Name="MaQL" ColumnName="MaQL" />
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
@@ -1171,8 +1799,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TaiKhoan">
-            <EntityTypeMapping TypeName="QUANLYGIANGVIENModel.TaiKhoan">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="QUANLYGIANGVIEN1Model.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
@@ -1182,6 +1821,450 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GiaoVien_NCKH" FunctionName="QUANLYGIANGVIEN1Model.Store.GiaoVien_NCKH">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.GiaoVien_NCKH_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenDeTai" ColumnName="TenDeTai" />
+                <ScalarProperty Name="Cap" ColumnName="Cap" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="NamThamGiaNC" ColumnName="NamThamGiaNC" />
+                <ScalarProperty Name="MaDeTai" ColumnName="MaDeTai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GiaoVien_NCKH_CapBo" FunctionName="QUANLYGIANGVIEN1Model.Store.GiaoVien_NCKH_CapBo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.GiaoVien_NCKH_CapBo_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenDeTai" ColumnName="TenDeTai" />
+                <ScalarProperty Name="Cap" ColumnName="Cap" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="NamThamGiaNC" ColumnName="NamThamGiaNC" />
+                <ScalarProperty Name="MaDeTai" ColumnName="MaDeTai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GiaoVien_NCKH_CapTruong" FunctionName="QUANLYGIANGVIEN1Model.Store.GiaoVien_NCKH_CapTruong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.GiaoVien_NCKH_CapTruong_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenDeTai" ColumnName="TenDeTai" />
+                <ScalarProperty Name="Cap" ColumnName="Cap" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="NamThamGiaNC" ColumnName="NamThamGiaNC" />
+                <ScalarProperty Name="MaDeTai" ColumnName="MaDeTai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LayTTDeSua" FunctionName="QUANLYGIANGVIEN1Model.Store.LayTTDeSua">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.LayTTDeSua_Result">
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoadDoAnTotNghiep" FunctionName="QUANLYGIANGVIEN1Model.Store.LoadDoAnTotNghiep">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.LoadDoAnTotNghiep_Result">
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="SoBuoiChamBai" ColumnName="SoBuoiChamBai" />
+                <ScalarProperty Name="SoDeTai" ColumnName="SoDeTai" />
+                <ScalarProperty Name="SoDoAnPBien" ColumnName="SoDoAnPBien" />
+                <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoadDoAnTotNghiep1" FunctionName="QUANLYGIANGVIEN1Model.Store.LoadDoAnTotNghiep1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.LoadDoAnTotNghiep1_Result">
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="SoBuoiChamBai" ColumnName="SoBuoiChamBai" />
+                <ScalarProperty Name="SoDeTai" ColumnName="SoDeTai" />
+                <ScalarProperty Name="SoDoAnPBien" ColumnName="SoDoAnPBien" />
+                <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+                <ScalarProperty Name="MaGV1" ColumnName="MaGV1" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+                <ScalarProperty Name="MaLop1" ColumnName="MaLop1" />
+                <ScalarProperty Name="TenLop1" ColumnName="TenLop1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoadHocNangCao" FunctionName="QUANLYGIANGVIEN1Model.Store.LoadHocNangCao">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.LoadHocNangCao_Result">
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoadMonLyThuyet" FunctionName="QUANLYGIANGVIEN1Model.Store.LoadMonLyThuyet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.LoadMonLyThuyet_Result">
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="MaHeDT" ColumnName="MaHeDT" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoadMonProject" FunctionName="QUANLYGIANGVIEN1Model.Store.LoadMonProject">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.LoadMonProject_Result">
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="MaHeDT" ColumnName="MaHeDT" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoadMonThucHanh" FunctionName="QUANLYGIANGVIEN1Model.Store.LoadMonThucHanh">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.LoadMonThucHanh_Result">
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="MaHeDT" ColumnName="MaHeDT" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoadMonTTSP" FunctionName="QUANLYGIANGVIEN1Model.Store.LoadMonTTSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.LoadMonTTSP_Result">
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="MaHeDT" ColumnName="MaHeDT" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoadMonTTXN" FunctionName="QUANLYGIANGVIEN1Model.Store.LoadMonTTXN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.LoadMonTTXN_Result">
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="MaHeDT" ColumnName="MaHeDT" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Project" FunctionName="QUANLYGIANGVIEN1Model.Store.Project">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.Project_Result">
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="SoSV" ColumnName="SoSV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QUANLYGIANGVIEN1Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QUANLYGIANGVIEN1Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QUANLYGIANGVIEN1Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QUANLYGIANGVIEN1Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QUANLYGIANGVIEN1Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QUANLYGIANGVIEN1Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QUANLYGIANGVIEN1Model.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="st_HDNCKH_NamCuoi" FunctionName="QUANLYGIANGVIEN1Model.Store.st_HDNCKH_NamCuoi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_HDNCKH_NamCuoi_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="SVNam" ColumnName="SVNam" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_HDNCKH_NamGanCuoi" FunctionName="QUANLYGIANGVIEN1Model.Store.st_HDNCKH_NamGanCuoi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_HDNCKH_NamGanCuoi_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="SVNam" ColumnName="SVNam" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayLopDTNienChe" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayLopDTNienChe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayLopDTNienChe_Result">
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="SoSV" ColumnName="SoSV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayLopDTNienCheDHCD" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayLopDTNienCheDHCD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayLopDTNienCheDHCD_Result">
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="SoSV" ColumnName="SoSV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayLopDTTinChi" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayLopDTTinChi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayLopDTTinChi_Result">
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="SoSV" ColumnName="SoSV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayLopDTTinChiDHCD" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayLopDTTinChiDHCD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayLopDTTinChiDHCD_Result">
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="SoSV" ColumnName="SoSV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayLopLyThuyet" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayLopLyThuyet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayLopLyThuyet_Result">
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayLopTHTCCN" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayLopTHTCCN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayLopTHTCCN_Result">
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="SoSV" ColumnName="SoSV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayLopThucHanhGV" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayLopThucHanhGV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayLopThucHanhGV_Result">
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="SoBuoiTren1DVHocTrinh" ColumnName="SoBuoiTren1DVHocTrinh" />
+                <ScalarProperty Name="MaHDT" ColumnName="MaHDT" />
+                <ScalarProperty Name="SoSV" ColumnName="SoSV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayMaLopLT" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayMaLopLT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayMaLopLT_Result">
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+                <ScalarProperty Name="MaHeDT" ColumnName="MaHeDT" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayMaLopThucHanh" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayMaLopThucHanh">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayMaLopThucHanh_Result">
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+                <ScalarProperty Name="MaHeDT" ColumnName="MaHeDT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LayNamHoc" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayNamHoc" />
+          <FunctionImportMapping FunctionImportName="st_LayThanhvien" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LayThanhvien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LayThanhvien_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LoadGiangVienChucVu" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LoadGiangVienChucVu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LoadGiangVienChucVu_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+                <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+                <ScalarProperty Name="PhanTramDuocGiam" ColumnName="PhanTramDuocGiam" />
+                <ScalarProperty Name="TenChucVu" ColumnName="TenChucVu" />
+                <ScalarProperty Name="MaChucDanh" ColumnName="MaChucDanh" />
+                <ScalarProperty Name="SoGioChuan" ColumnName="SoGioChuan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_LoadQuanLyPhongMay" FunctionName="QUANLYGIANGVIEN1Model.Store.st_LoadQuanLyPhongMay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_LoadQuanLyPhongMay_Result">
+                <ScalarProperty Name="MaQL" ColumnName="MaQL" />
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="SoLuongPM" ColumnName="SoLuongPM" />
+                <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_QuenMatKhau" FunctionName="QUANLYGIANGVIEN1Model.Store.st_QuenMatKhau">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_QuenMatKhau_Result">
+                <ScalarProperty Name="tendangnhap" ColumnName="tendangnhap" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_SuPham" FunctionName="QUANLYGIANGVIEN1Model.Store.st_SuPham">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_SuPham_Result">
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="SoSV" ColumnName="SoSV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_Thongtincanhan" FunctionName="QUANLYGIANGVIEN1Model.Store.st_Thongtincanhan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_Thongtincanhan_Result">
+                <ScalarProperty Name="magv" ColumnName="magv" />
+                <ScalarProperty Name="tendangnhap" ColumnName="tendangnhap" />
+                <ScalarProperty Name="tengv" ColumnName="tengv" />
+                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+                <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+                <ScalarProperty Name="socmtnd" ColumnName="socmtnd" />
+                <ScalarProperty Name="trinhdohocvan" ColumnName="trinhdohocvan" />
+                <ScalarProperty Name="machucdanh" ColumnName="machucdanh" />
+                <ScalarProperty Name="machucvu" ColumnName="machucvu" />
+                <ScalarProperty Name="namvaolam" ColumnName="namvaolam" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+                <ScalarProperty Name="tenchucdanh" ColumnName="tenchucdanh" />
+                <ScalarProperty Name="tenchucvu" ColumnName="tenchucvu" />
+                <ScalarProperty Name="mabomon" ColumnName="mabomon" />
+                <ScalarProperty Name="tenbomon" ColumnName="tenbomon" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_TTxiNghiep" FunctionName="QUANLYGIANGVIEN1Model.Store.st_TTxiNghiep">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.st_TTxiNghiep_Result">
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="SoSV" ColumnName="SoSV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SuaHocVien" FunctionName="QUANLYGIANGVIEN1Model.Store.SuaHocVien" />
+          <FunctionImportMapping FunctionImportName="ThemHocVien" FunctionName="QUANLYGIANGVIEN1Model.Store.ThemHocVien" />
+          <FunctionImportMapping FunctionImportName="Thongke" FunctionName="QUANLYGIANGVIEN1Model.Store.Thongke">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.Thongke_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+                <ScalarProperty Name="HinhThucDT" ColumnName="HinhThucDT" />
+                <ScalarProperty Name="SoTiet" ColumnName="SoTiet" />
+                <ScalarProperty Name="TenHeDT" ColumnName="TenHeDT" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Thongtincanhan" FunctionName="QUANLYGIANGVIEN1Model.Store.Thongtincanhan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYGIANGVIEN1Model.Thongtincanhan_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="Quyen" ColumnName="Quyen" />
+                <ScalarProperty Name="NgayTaoTK" ColumnName="NgayTaoTK" />
+                <ScalarProperty Name="MaGV1" ColumnName="MaGV1" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="SoCMTND" ColumnName="SoCMTND" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="TrinhDoHocVan" ColumnName="TrinhDoHocVan" />
+                <ScalarProperty Name="MaChucDanh" ColumnName="MaChucDanh" />
+                <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+                <ScalarProperty Name="NamVaoLam" ColumnName="NamVaoLam" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="MaBoMon" ColumnName="MaBoMon" />
+                <ScalarProperty Name="machucdanh1" ColumnName="machucdanh1" />
+                <ScalarProperty Name="tenchucdanh" ColumnName="tenchucdanh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ThongTinHocNangCao" FunctionName="QUANLYGIANGVIEN1Model.Store.ThongTinHocNangCao" />
+          <FunctionImportMapping FunctionImportName="XoaHocVien" FunctionName="QUANLYGIANGVIEN1Model.Store.XoaHocVien" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1196,7 +2279,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

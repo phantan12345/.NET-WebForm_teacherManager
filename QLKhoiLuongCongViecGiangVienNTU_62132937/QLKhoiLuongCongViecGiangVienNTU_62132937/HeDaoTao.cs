@@ -17,8 +17,8 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HeDaoTao()
         {
-            this.Lop = new HashSet<Lop>();
-            this.MonHoc = new HashSet<MonHoc>();
+            this.Lops = new HashSet<Lop>();
+            this.MonHocs = new HashSet<MonHoc>();
         }
     
         public string MaHDT { get; set; }
@@ -27,8 +27,8 @@ namespace QLKhoiLuongCongViecGiangVienNTU_62132937
         public string GhiChu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lop> Lop { get; set; }
+        public virtual ICollection<Lop> Lops { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MonHoc> MonHoc { get; set; }
+        public virtual ICollection<MonHoc> MonHocs { get; set; }
     }
 }

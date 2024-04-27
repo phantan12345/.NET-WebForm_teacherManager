@@ -23,7 +23,7 @@
 <center>
 <form id="form1" runat="server" style="width:90%">  
 
- <div class="wrapper col0">
+<%-- <div class="wrapper col0">
   <div id="topline">
     <p>Tel: 09888888888 | Mail:project5@utehy.edu.vn</p>
       <ul >
@@ -34,21 +34,16 @@
     </ul>
     <br class="clear" />
   </div>
-</div>
+</div>--%>
 <!-- ####################################################################################################### -->
 <div class="wrapper">
   <div id="header">
     <div class="fl_left">
       <h1><a href="#"><strong>Q</strong>uản <strong>L</strong>ý <strong>T</strong>hừa <strong>G</strong>iờ</a></h1>
-      <p>Khoa công  ngh&#7879; thông tin UTEHY</p>
+      <p>Khoa công  ngh&#7879; thông tin NTU</p>
     </div>
      <div class="fl_right">
-     <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
-                        width="100%" style="height: 100%">
-                   <%--<embed  src= width="468" height="60" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
-                            type="application/x-shockwave-flash" scale="exactfit" border="1" ></embed>--%>
-                            <img width="468" height="60" src="Image/logo truong.png" alt="Zing mp3">
-                    </object>
+    
      </div>
     <br class="clear" />
   </div>
@@ -103,9 +98,13 @@
         <ul>
         <li><a href="ThongTinCaNhan.aspx">Xem thông tin cá nhân</a></li>
             <li><a href="QuenMatKhau.aspx">Quên mật khẩu</a></li>
-            <li><a href="DoiMatKhau1.aspx">Đổi mật khẩu</a></li>            
+            <li><a href="DoiMatKhau.aspx">Đổi mật khẩu</a></li>            
             <li><a href="TaoTaiKhoan.aspx">Tạo tài khoản</a></li>
-            <li><a href="Logout.aspx">Thoát</a></li>
+            <% if(Session.Contents["TrangThai"] == "ChuaDangNhap") { %>
+            <li><a href="Login.aspx">Đăng Nhập</a></li>
+             <% } else { %>
+            <li ><a href="Logout.aspx">Thoát</a></li>
+             <% } %>
         </ul>
         </li>
       </ul>
@@ -128,11 +127,11 @@
 
 
 <center> 
-<div style=" text-align:center;color:White; background-color:Silver; font-family: Arial, Helvetica, sans-serif; font-size: 13px; width:100%; padding-top:10px; padding-bottom:10px;">
-     Cấp phép ngày 14/09/2011<br />
-     Phát triển bơi nhóm project5 utehy.edu.vn<br />
+<div style=" text-align:center;color:White; background-color:deepskyblue; font-family: Arial, Helvetica, sans-serif; font-size: 13px; width:100%; padding-top:10px; padding-bottom:10px;">
+     Cấp phép ngày 30/04/2024<br />
+     Phát triển bơi nhóm project5 ntu.edu.vn<br />
     Trụ sở Dân Tiến-Khoái Châu-Hưng Yên<br />
-     Điện  thoại: 032138888888
+     Version:v1
  </div>
  </center>
 
