@@ -24,7 +24,7 @@
                 </br>
             </td>--%>
             <td style="width:100%">
-            <img src="Image/khuan-vien-dh-nha-trang.png" width="100%" />
+            <img src="Image/banner.png" width="100%" />
             </td>
      <%-- <td style="width:20%; font-size:30px; font-family:VNI-HLThuphap; text-align:center; line-height:60px ">
                  Sáng<br />

@@ -108,7 +108,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 	}
 
 #header .fl_left{
-	display:block;
+	display:flex;
 	float:left;
 	margin-top:7px;
 	overflow:hidden;
@@ -117,6 +117,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 #header .fl_right{
 	display:block;
 	float:right;
+	width:468px;
 	height:60px;
 	margin-top:21px;
 	overflow:hidden;
@@ -129,10 +130,10 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 	line-height:normal;
 	}
 
-#header h1 a{
-	font-size:46px;
-	color:#999999;
-	background-color:#FFFFFF;
+	#header h1 a {
+		font-size: 46px;
+		color: #08467D;
+		background-color: #FFFFFF;
 	}
 
 #header h1 strong{
@@ -431,7 +432,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 /* ----------------------------------------------Footer-------------------------------------*/
 
 #footer{
-	padding:20px 0;
+	padding:0px 0;
 	}
 
 #footer h2, #footer p, #footer ul, #footer a{
@@ -471,7 +472,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 /* ----------------------------------------------Social Bar With Newsletter-------------------------------------*/
 
 #socialise{
-	padding:20px 0;
+	padding:0px 0;
 	}
 
 #socialise ul{

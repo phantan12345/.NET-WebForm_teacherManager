@@ -217,7 +217,9 @@
     <Content Include="Image\delete.png" />
     <Content Include="Image\footer.png" />
     <Content Include="Image\header.png" />
+    <Content Include="Image\banner.png" />
     <Content Include="Image\logo truong.png" />
+    <Content Include="Image\logonhatrang.png" />
     <Content Include="Image\MenuItem1.gif" />
     <Content Include="Image\New.gif" />
     <Content Include="Image\port.png" />
